@@ -1,0 +1,43 @@
+/*
+ Rain Water Traapping.
+*/
+import java.util.*;
+public class Main
+{
+    public int[] ReturnLeftGreatest(int arr[]) {
+        int left[] = new int[arr.length];
+        int max = 0;
+        for(int i=0 ; i< arr.length; i++) {
+	        if(max < arr[i])
+	            max = arr[i];
+	            
+	       left[i] = max;
+	    }
+        return left;
+    }
+    public int[] ReturnRightGreatest(int arr[]) {
+        int max =0;
+        int right[] = new int[arr.length];
+	     for(int i=arr.length-1 ; i>= 0; i--) {
+	        if(max < arr[i])
+	            max = arr[i];
+	            
+	       right[i] = max;
+	    }
+        return right;
+    }
+	public static void main(String[] args) 
+	{
+	    Main obj = new Main();
+	    int arr[] = {3,1,2,4,0,1,3,2};
+	    int left[] = obj.ReturnLeftGreatest(arr);
+	    int right[] = obj.ReturnRightGreatest(arr);
+	    int sum =0;
+	    
+        for(int i=1; i< arr.length-1; i++) {
+            sum += Math.min(right[i],left[i]) - arr[i];
+        }
+        System.out.println(sum);
+	    
+	}
+}
