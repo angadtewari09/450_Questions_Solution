@@ -1,0 +1,74 @@
+/*Merge two sorted arrays without using extra space*/
+import java.util.*;
+public class Main 
+{
+    public static void main(String args[])
+    {
+        // code here
+        int arr1[] = {1,3,5,7};
+        int arr2[] = {0,2,6,8,9};
+        int n = arr1.length;
+        int m = arr2.length;
+     int t_len = n + m;
+        
+        int gap = (t_len+1)/2;
+        
+        while(gap>0)
+        {
+            int i = 0;
+            int j = gap;
+            int a1[], a2[];
+            while(j<t_len)
+            {
+                
+                int sub1, sub2;
+                if(i<n)
+                {
+                    a1 = arr1;
+                    sub1 = 0;
+                }
+                else
+                {
+                    a1 = arr2;
+                    sub1 = n;
+                }
+                
+                if(j<n)
+                {
+                    a2 = arr1;
+                    sub2 = 0;
+                }
+                else
+                {
+                    a2 = arr2;
+                    sub2 = n;
+                }
+                
+                if(a1[i-sub1]>a2[j-sub2])
+                {
+                    int temp = a1[i-sub1];
+                    a1[i-sub1] = a2[j-sub2];
+                    a2[j-sub2] = temp;
+                }
+                
+                i++;
+                j++;
+                
+            }
+            
+            if(gap!= 1) gap = (gap + 1)/2;
+            else gap = 0;
+            
+        }
+        
+        for(int x = 0; x<arr1.length; x++)
+            System.out.print(arr1[x] + " " );
+        System.out.println();
+        for(int y = 0; y<arr2.length; y++)
+            System.out.print(arr2[y] + " ");
+    }
+}
+      
+        
+        
+        
