@@ -1,0 +1,14 @@
+int getPairsCount(int[] arr, int n, int k) {
+ 
+	for(int i=0; i< arr.length;i++)
+        {
+            val = k-arr[i];
+            if(map.containsKey(val))
+                count = count + map.get(val);
+            if(map.get(arr[i]) == null)
+                map.put( arr[i] , 0 + 1);
+            else
+                map.put( arr[i] , map.getOrDefault(arr[i] , 0) + 1);
+        }
+	return count;
+}
