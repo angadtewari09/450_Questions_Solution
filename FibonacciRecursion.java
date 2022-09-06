@@ -8,10 +8,8 @@ public class Main
     {
         if( n == 0 )
             return ;
-        n-=1;
-        int c = a + b;
-        System.out.print(c + " ");
-        Fibonacci( n ,b , c ) ;
+        System.out.print( ( a+b ) + " ");
+        Fibonacci( n-1 ,b , ( a+b ) ) ;
 
     }
     public static void main(String args[])
