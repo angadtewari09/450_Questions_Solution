@@ -1,0 +1,28 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    int arr[] = {10,5,10};
+	    int largest = arr[0];
+	    int second_largest = arr[0];
+	    
+	    //Corner case:
+	    
+	    /* 
+	    if(arr.length == 2)
+	        return "INVALID INPUT";
+	    */
+	    
+	   for( int i=1; i< arr.length; i++ )
+	     largest = Math.max( largest , arr[i] );
+	   
+	   for( int i=0; i< arr.length; i++ ) {
+	       if( arr[i] != largest ){
+	           second_largest = Math.max( second_largest , arr[i] );
+	       }
+	   }
+		System.out.println(second_largest);
+	}
+}
