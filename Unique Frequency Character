@@ -1,0 +1,51 @@
+/*
+Minimum characters required to be removed to make frequency of each character unique
+*/
+import java.util.*;
+public class Main
+{
+    public static void main(String args[])
+    {
+        int count = 97;
+        String str = "abbbccc";
+        int char_arr[] = new int[26];
+        
+        for(int i = 0;i<str.length(); i++ )
+        {
+            char_arr[ (int)str.charAt(i) - 'a'] += 1 ;
+        }
+        
+        // for(int i=0; i< 26; i++ )
+        //     System.out.println(char_arr[i] + " -> " +((char)(count++)) );
+        
+        HashMap<Character , Integer> map = new HashMap<>();
+        for( int i =0; i< 26; i++ )
+        {
+            if( char_arr[i] > 0 )
+            {
+                // if( !map.containsKey( ((char)char_arr[i]) ) &&    )
+                char ch = (char)(97 + i);
+                
+                if( !map.containsValue(char_arr[i]) )
+                    map.put(  /*((char)char_arr[i])*/ ch , char_arr[i] );
+                else{
+                    while( map.containsValue(char_arr[i]) && char_arr[i] > 0 )
+                    {
+                        char_arr[i] -- ;
+                    }
+                    map.put(  /*((char)char_arr[i])*/ ch , char_arr[i] );
+                }
+            }
+        }
+        //String answer = 
+        int totlen = str.length();
+        int maplen = 0;
+        
+        for( Map.Entry<Character , Integer> entry : map.entrySet() )
+        {
+            if( entry.getValue() > 0 )
+                maplen += entry.getValue();
+        }
+        System.out.println( totlen - maplen);
+    }
+}
