@@ -1,0 +1,31 @@
+ public static void LevelOrder( Node root )
+    {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        
+        while( !q.isEmpty() )
+        {
+            Node curr = q.peek();
+            
+            if( curr == null )
+            {
+                q.remove();
+                curr = q.peek();
+                System.out.println();
+                q.add( null );
+            }
+            
+            if( curr.left != null )
+                q.add( curr.left );
+            
+            if( curr.right != null )
+                q.add( curr.right );
+         
+            
+            System.out.print( q.remove().data +"  " );
+            
+        }
+    }
+    //O(n) -> Time
+    //O(n) -> Space
