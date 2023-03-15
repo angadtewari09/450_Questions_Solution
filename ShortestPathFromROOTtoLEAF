@@ -1,0 +1,44 @@
+    public static void minimumDistance( Node root )
+    {
+        Queue<Node> q = new LinkedList<>();
+        HashMap<Node , Node> map = new HashMap<>();
+       // ArrayList<Integer> list = new ArrayList<>();
+        
+        
+        Node flag = new Node(0);
+        q.add( root );
+        //map.put( root , root );
+        
+        while( !q.isEmpty() )
+        {
+            Node curr = q.peek();
+            
+             if( curr.right == null && curr.left == null ){
+                flag = curr;
+                break;
+            }
+            else
+            {
+                if( curr.left != null ) {
+                    q.add( curr.left );
+                    map.put( curr.left , curr );
+                }
+            
+                if( curr.right != null ) {
+                    q.add( curr.right );
+                    map.put( curr.right , curr );
+                 }
+            }
+            q.remove();
+        }
+        PrintPath( flag , map );
+       
+    }
+    public static void PrintPath( Node Data , HashMap< Node , Node > map )
+    {
+        if( map.get( Data ) == Data )
+            return;
+        
+        PrintPath( map.get(Data) , map );
+        System.out.println( map.get(Data).data + " ->");
+    }
