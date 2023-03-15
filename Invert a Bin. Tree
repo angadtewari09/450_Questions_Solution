@@ -1,0 +1,15 @@
+  void mirror( Node root ) {
+        // Your code here
+        if( root == null )
+            return;
+        
+        mirror( root.left );
+        mirror( root.right );
+        Node nd1 = root.left;
+        Node nd2 =  root.right ;
+       
+       root.left = nd2;
+       root.right = nd1;
+
+    }
+}
