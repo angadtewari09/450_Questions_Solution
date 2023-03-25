@@ -1,0 +1,29 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Stack<String> stack = new Stack<>();
+	    String str = "ab+c+d+e+";
+	    String output = "";
+	    
+	    for( int i = 0; i< str.length(); i++ )
+	    {
+	        char ch = str.charAt( i );
+	        if( Character.isLetterOrDigit(ch) )
+	            stack.push( Character.toString(ch) );
+	        else
+	        {
+	            String second_op = stack.peek();
+	            stack.pop();
+	            String first_op = stack.peek();
+	            stack.pop();
+	            
+
+	            stack.push( first_op + ch + second_op );
+	        }
+	    }
+		System.out.println( stack.pop() );
+	}
+}
