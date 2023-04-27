@@ -1,0 +1,13 @@
+   //Boolean array of size equals to height of the binary tree with initial value 'false'
+   public void RightView( Node root , int l  ,boolean level[] )
+    {
+        if( root == null )
+            return;
+            
+        if( level[l] == false ) {
+            level[l] = true;
+            System.out.print( root.data + " " ); 
+        }
+        RightView( root.right , l+1 , level );
+        RightView( root.left , l+1 , level);
+    }
