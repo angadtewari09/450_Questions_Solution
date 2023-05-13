@@ -1,0 +1,42 @@
+
+class FlattenLinkedList
+{
+    Node flatten(Node root)
+    {
+	// Your code here
+	    Node dummy = new Node(-1);
+	    Node res = dummy;
+	    Node curr = root;
+	    
+	    while( curr != null )
+	    {
+	        Node temp = curr;
+	        while( temp!=null )
+	        {
+	            dummy.bottom = new Node( temp.data );
+	            dummy = dummy.bottom;
+	            temp = temp.bottom;
+	        }
+	        curr = curr.next;
+	    }
+	    dummy = res.bottom;
+	    
+	    while( dummy != null )
+	    {
+	        Node temp = dummy.bottom;
+	        while( temp != null )
+	        {
+	            if( dummy.data > temp.data )
+	            {
+	                int Temp = dummy.data;
+	                dummy.data = temp.data;
+	                temp.data = Temp;
+	            }
+	            temp = temp.bottom;
+	        }
+	        dummy = dummy.bottom;
+	    }
+	    
+	    return res.bottom;
+    }
+}
