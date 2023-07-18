@@ -1,0 +1,66 @@
+//Check if two nodes are cousins.
+class Node
+{
+    int data;
+    Node left , right;
+    Node( int data ) {
+        this.data = data;
+        left = right =  null;
+    }
+}
+public class Main
+{
+   
+    Node root;
+    public boolean checkSibling( Node root , Node a, Node b )
+    {
+        if( root == null )
+            return false;
+        
+        if( ( root.left == a && root.right == b ) || ( root.left == b && root.right == a ) || checkSibling( root.left , a , b ) || checkSibling( root.right , a ,b ) )
+            return true;
+       
+        return false;
+    }
+  public int checkLevel( Node root , Node node , int level )
+  {
+      if( root == null )
+        return 0;
+      if( root.data == node.data )
+        return level;
+    
+    int l;
+    l = checkLevel( root.left , node , level + 1 );
+    if( l!=0 )
+        return l;
+    l = checkLevel( root.right , node , level + 1 );
+    return l;
+  }
+    public boolean checkCousin( Node root, Node a , Node b ){
+        
+        if( root == null || a == null || b == null )
+            return false;
+        
+        if( checkSibling( root , a ,b ) == true )
+            return false;
+        if( checkLevel( root , a , 1 ) != checkLevel( root , b , 1 ) )
+            return false;
+        
+        return true;
+    } 
+	public static void main(String[] args) 
+	{
+	    Main ob = new Main();
+	    ob.root = new Node(1);
+	    ob.root.left = new Node(2);
+	    ob.root.right = new Node(3);
+	    ob.root.left.left = new Node(4);
+	    ob.root.left.right = new Node(5);
+	    ob.root.right.left = new Node(6);
+	    ob.root.right.right = new Node(7);
+	    Node Node1 = ob.root.right.left;
+        Node Node2 = ob.root.right.right;
+        System.out.println( Node1.data +" " + Node2.data);
+		System.out.println( ob.checkCousin( ob.root, Node1 ,Node2 ));
+	}
+}
